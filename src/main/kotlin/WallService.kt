@@ -3,6 +3,10 @@ package ru.wall
 object WallService {
     private var posts = emptyArray<Post>()
 
+    fun getNumberPost(): Int{
+        return posts.lastIndex+1
+    }
+
     fun add(post: Post): Post {
         if (posts.isNotEmpty()) {
             for (i: Int in 0..posts.size) {
@@ -54,7 +58,7 @@ object WallService {
         return false
     }
 
-    fun getPost(id: Long): String {
+    fun getPost(id: Int): String {
         for ((index, post) in posts.withIndex()) {
             if (post.id == id) {
                 return posts[index].toString()
